@@ -54,25 +54,40 @@ describe( 'lib/templater', function() {
 
             it( 'simple object', function() {
 
+                let count = 100;
+
                 let template = {
 
                     time: '{{UTC}}',
                     name: 'my name',
-                    special_name: '{{SPECIAL-NAME}}'
+                    special_name: '{{SPECIAL-NAME}}',
+                    longDate: '{{ISODATE:milliseconds}}',
+                    stillLongDate: '{{ISODATE:milliseconds=true}}',
+                    shortDate: '{{ISODATE:milliseconds=false,otherThing=true}}',
+                    tick: '{{TICKER:offset=50}}',
+                    happy: '{{HAPPY:yesterday = no, today=good,,,}}'
                 };
 
                 let original = cloneDeep( template );
 
                 let result = new Templater( template )
                         .transform( 'UTC', 'Today!' )
-                        .transform( 'SPECIAL-NAME', (key) => 'special name!' )
+                        .transform( 'SPECIAL-NAME', (options) => 'special name!' )
+                        .transform( 'ISODATE', (options) => 'iso-' + options.milliseconds )
+                        .transform( 'TICKER', (options) => { count--; return count - (options.offset || 0); } )
+                        .transform( 'HAPPY', (options) => options.today )
                         .render();
 
                 expect( result ).to.eql( {
 
                     time: 'Today!',
                     name: 'my name',
-                    special_name: 'special name!'
+                    special_name: 'special name!',
+                    longDate: 'iso-true',
+                    stillLongDate: 'iso-true',
+                    shortDate: 'iso-false',
+                    tick: 49,
+                    happy: 'good'
                 });
 
                 expect( template ).to.eql( original );
