@@ -13,6 +13,7 @@ describe( 'lib/index', function() {
         's3',
         'scheduled',
         'sns',
+        'sqs'
 
     ].forEach( (type) => {
 
