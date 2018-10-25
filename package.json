@@ -36,9 +36,11 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "clone-deep": "^4.0.0",
+    "uuid": "^3.3.2",
     "vandium-utils": "^1.2.0"
   },
   "devDependencies": {
+    "@vandium/event-identifier": "^2.0.0",
     "chai": "^4.1.2",
     "mocha": "^5.0.0",
     "nyc": "^13.1.0",
