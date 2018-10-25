@@ -1,0 +1,17 @@
+{
+
+    "resource": "/",
+    "path": "/",
+    "httpMethod": "GET",
+    "headers": null,
+    "queryStringParameters": null,
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+
+        "resourcePath": "/",
+        "apiId": "00aaa0a00a"
+    },
+    "body": null,
+    "isBase64Encoded": false
+}

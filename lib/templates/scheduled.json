@@ -1,0 +1,12 @@
+{
+  "account": "123456789012",
+  "region": "us-east-1",
+  "detail": {},
+  "detail-type": "Scheduled Event",
+  "source": "aws.events",
+  "time": "{{UTC:milliseconds=false}}",
+  "id": "{{UUID}}",
+  "resources": [
+    "arn:aws:events:us-east-1:123456789012:rule/my-schedule"
+  ]
+}

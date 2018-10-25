@@ -1,0 +1,34 @@
+{
+    "eventVersion": "2.0",
+    "eventTime": "{{UTC}}",
+    "requestParameters": {
+        "sourceIPAddress": "127.0.0.1"
+    },
+    "s3": {
+        "configurationId": "testConfigRule",
+        "object": {
+            "eTag": "0123456789abcdef0123456789abcdef",
+            "sequencer": "0A1B2C3D4E5F678901",
+            "key": "picture.jpg",
+            "size": 1024
+        },
+        "bucket": {
+            "arn": "bucketarn",
+            "name": "sourcebucket",
+            "ownerIdentity": {
+                "principalId": "USER"
+            }
+        },
+        "s3SchemaVersion": "1.0"
+    },
+    "responseElements": {
+        "x-amz-id-2": "EXAMPLE123/5678abcdefghijklambdaisawesome/mnopqrstuvwxyzABCDEFGH",
+        "x-amz-request-id": "EXAMPLE123456789"
+    },
+    "awsRegion": "us-east-1",
+    "eventName": "ObjectCreated:Put",
+    "userIdentity": {
+        "principalId": "USER"
+    },
+    "eventSource": "aws:s3"
+}
