@@ -1,6 +1,6 @@
 {
-  "name": "@vandium/event-mock",
-  "version": "1.0.0",
+  "name": "lambda-event-mock",
+  "version": "0.1.0",
   "description": "Mocks AWS Lambda events",
   "main": "lib/index.js",
   "keywords": [
@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/vandium-io/event-mock.git"
+    "url": "https://github.com/vandium-io/lambda-event-mock.git"
   },
   "engines": {
     "node": ">=8.10"
