@@ -18,7 +18,7 @@ describe( 'lib/scheduled', function() {
 
             it( 'defaults', function() {
 
-                let event = new SQSEventMock().next().build();
+                let event = new SQSEventMock().build();
 
                 expect( eventIdentifier.identify( event ) ).to.equal( 'sqs' );
             });

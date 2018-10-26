@@ -14,6 +14,13 @@ describe( 'lib/api', function() {
 
         describe( '.build', function() {
 
+            it( 'defaults', function() {
+
+                let event = new S3EventMock().build();
+
+                expect( eventIdentifier.identify( event ) ).to.equal( 's3' );
+            });
+
             it( 'normal operation', function() {
 
                 let event = new S3EventMock()

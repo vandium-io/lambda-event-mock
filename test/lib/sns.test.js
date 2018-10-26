@@ -14,6 +14,13 @@ describe( 'lib/api', function() {
 
         describe( '.build', function() {
 
+            it( 'defaults', function() {
+
+                let event = new SNSEventMock().build();
+
+                expect( eventIdentifier.identify( event ) ).to.equal( 'sns' );
+            });
+
             it( 'normal operation', function() {
 
                 let event = new SNSEventMock()
