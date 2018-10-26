@@ -12,6 +12,106 @@ describe( 'lib/api', function() {
 
     describe( 'APIEventMock', function() {
 
+        describe( 'constructor', function() {
+
+            let instance = new APIEventMock();
+
+            expect( instance.method ).to.exist;
+            expect( instance.headers ).to.exist;
+            expect( instance.queryStringParameter ).to.exist;
+            expect( instance.queryStringParameters ).to.exist;
+        });
+
+        describe( '.body', function() {
+
+            it( 'body is a string', function() {
+
+                let instance = new APIEventMock();
+
+                let returnValue = instance.body( 'my-body' );
+                expect( returnValue ).to.equal( instance );
+
+                expect( instance._event.body ).to.equal( 'my-body' );
+                expect( instance._event.isBase64Encoded ).to.be.false;
+            });
+
+            it( 'body is a buffer', function() {
+
+                let instance = new APIEventMock();
+
+                let returnValue = instance.body( new Buffer( 'my-body' ) );
+                expect( returnValue ).to.equal( instance );
+
+                expect( instance._event.body ).to.equal( new Buffer( 'my-body' ).toString( 'base64' ) );
+                expect( instance._event.isBase64Encoded ).to.be.true;
+            });
+
+            it( 'body is an object', function() {
+
+                let instance = new APIEventMock();
+
+                let returnValue = instance.body( { one:1, two: 'two' } );
+                expect( returnValue ).to.equal( instance );
+
+                expect( instance._event.body ).to.equal( '{"one":1,"two":"two"}' );
+                expect( instance._event.isBase64Encoded ).to.be.false;
+            });
+
+            it( 'body not set', function() {
+
+                let instance = new APIEventMock();
+
+                let returnValue = instance.body( null );
+                expect( returnValue ).to.equal( instance );
+
+                expect( instance._event.body ).to.be.null;
+                expect( instance._event.isBase64Encoded ).to.be.false;
+            });
+
+            it( 'no parameters', function() {
+
+                let instance = new APIEventMock();
+
+                let returnValue = instance.body();
+                expect( returnValue ).to.equal( instance );
+
+                expect( instance._event.body ).to.equal( '{}' );
+                expect( instance._event.isBase64Encoded ).to.be.false;
+            });
+        });
+
+        describe( '.apiId', function() {
+
+            it( 'normal operation', function() {
+
+                let instance = new APIEventMock();
+
+                let returnValue = instance.apiId( '1234' );
+                expect( returnValue ).to.equal( instance );
+
+                expect( instance._event.requestContext.apiId ).to.equal( '1234' );
+            });
+        });
+
+        describe( '.base64Encoded', function() {
+
+            it( 'normal operation', function() {
+
+                let instance = new APIEventMock();
+
+                let returnValue = instance.base64Encoded( true );
+                expect( returnValue ).to.equal( instance );
+
+                expect( instance._event.isBase64Encoded ).to.be.true;
+
+                instance.base64Encoded( false );
+                expect( instance._event.isBase64Encoded ).to.be.false;
+
+                instance.base64Encoded();
+                expect( instance._event.isBase64Encoded ).to.be.true;
+            });
+        });
+
         describe( '.build', function() {
 
             it( 'defaults', function() {
