@@ -9,7 +9,7 @@ const eventMock = require( '../../lib/index' );
 describe( 'lib/index', function() {
 
     [
-        'api',
+        'apigateway',
         's3',
         'scheduled',
         'sns',

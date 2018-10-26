@@ -6,15 +6,15 @@ const expect = require( 'chai' ).expect;
 
 const eventIdentifier = require( '@vandium/event-identifier' );
 
-const APIEventMock = require( '../../lib/api' );
+const APIGatewayEventMock = require( '../../lib/apigateway' );
 
 describe( 'lib/api', function() {
 
-    describe( 'APIEventMock', function() {
+    describe( 'APIGatewayEventMock', function() {
 
         describe( 'constructor', function() {
 
-            let instance = new APIEventMock();
+            let instance = new APIGatewayEventMock();
 
             expect( instance.method ).to.exist;
             expect( instance.headers ).to.exist;
@@ -26,7 +26,7 @@ describe( 'lib/api', function() {
 
             it( 'body is a string', function() {
 
-                let instance = new APIEventMock();
+                let instance = new APIGatewayEventMock();
 
                 let returnValue = instance.body( 'my-body' );
                 expect( returnValue ).to.equal( instance );
@@ -37,7 +37,7 @@ describe( 'lib/api', function() {
 
             it( 'body is a buffer', function() {
 
-                let instance = new APIEventMock();
+                let instance = new APIGatewayEventMock();
 
                 let returnValue = instance.body( new Buffer( 'my-body' ) );
                 expect( returnValue ).to.equal( instance );
@@ -48,7 +48,7 @@ describe( 'lib/api', function() {
 
             it( 'body is an object', function() {
 
-                let instance = new APIEventMock();
+                let instance = new APIGatewayEventMock();
 
                 let returnValue = instance.body( { one:1, two: 'two' } );
                 expect( returnValue ).to.equal( instance );
@@ -59,7 +59,7 @@ describe( 'lib/api', function() {
 
             it( 'body not set', function() {
 
-                let instance = new APIEventMock();
+                let instance = new APIGatewayEventMock();
 
                 let returnValue = instance.body( null );
                 expect( returnValue ).to.equal( instance );
@@ -70,7 +70,7 @@ describe( 'lib/api', function() {
 
             it( 'no parameters', function() {
 
-                let instance = new APIEventMock();
+                let instance = new APIGatewayEventMock();
 
                 let returnValue = instance.body();
                 expect( returnValue ).to.equal( instance );
@@ -84,7 +84,7 @@ describe( 'lib/api', function() {
 
             it( 'normal operation', function() {
 
-                let instance = new APIEventMock();
+                let instance = new APIGatewayEventMock();
 
                 let returnValue = instance.apiId( '1234' );
                 expect( returnValue ).to.equal( instance );
@@ -97,7 +97,7 @@ describe( 'lib/api', function() {
 
             it( 'normal operation', function() {
 
-                let instance = new APIEventMock();
+                let instance = new APIGatewayEventMock();
 
                 let returnValue = instance.base64Encoded( true );
                 expect( returnValue ).to.equal( instance );
@@ -116,7 +116,7 @@ describe( 'lib/api', function() {
 
             it( 'defaults', function() {
 
-                let event = new APIEventMock().build();
+                let event = new APIGatewayEventMock().build();
 
                 expect( event.resource ).to.equal( '/' );
                 expect( event.path ).to.equal( '/' );
@@ -136,7 +136,7 @@ describe( 'lib/api', function() {
 
             it( 'simple', function() {
 
-                let event = new APIEventMock()
+                let event = new APIGatewayEventMock()
                                     .method( 'POST' )
                                     .body( { one: 1, two: 2 } )
                                     .queryStringParameter( 'expanded', true )
@@ -160,7 +160,7 @@ describe( 'lib/api', function() {
 
             it( 'buffer body', function() {
 
-                let event = new APIEventMock()
+                let event = new APIGatewayEventMock()
                                     .method( 'POST' )
                                     .body( new Buffer( JSON.stringify( { one: 1, two: 2 } ) ) )
                                     .queryStringParameter( 'expanded', true )

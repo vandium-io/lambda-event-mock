@@ -64,9 +64,9 @@ describe( 'lib/templates/index', function() {
     }
 
     // simple types
-    describe( '.api', function() {
+    describe( '.apigateway', function() {
 
-        validateTemplate( 'api', (event) => {
+        validateTemplate( 'apigateway', (event) => {
 
             expect( event.path ).to.exist;
             expect( event.httpMethod ).to.exist;
@@ -77,7 +77,21 @@ describe( 'lib/templates/index', function() {
             expect( event.requestContext ).to.exist;
             expect( event.body ).to.be.null;
             expect( event.isBase64Encoded ).to.be.false;
-        }, 'apigateway' );
+        });
+    });
+
+    describe( '.cloudformation', function() {
+
+        validateTemplate( 'cloudformation', (event) => {
+
+            expect( event.StackId ).to.exist;
+            expect( event.ResponseURL ).to.exist;
+            expect( event.ResourceProperties ).to.exist;
+            expect( event.RequestType ).to.exist;
+            expect( event.ResourceType ).to.exist;
+            expect( event.RequestId ).to.exist;
+            expect( event.LogicalResourceId ).to.exist;
+        });
     });
 
     describe( '.scheduled', function() {
