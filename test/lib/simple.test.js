@@ -43,19 +43,6 @@ describe( 'lib/simple', function() {
 
                 expect( instance._event ).to.eql( { one: 1 } );
             });
-
-            it( 'normal operation, with helpers', function() {
-
-                let instance = new SimpleEventMock( 'test_template', [ 'prop1', 'prop2' ] );
-
-                expect( templates.test_template.render.calledOnce ).to.be.true;
-                expect( templates.test_template.render.firstCall.args ).to.eql( [] );
-
-                expect( instance._event ).to.eql( { one: 1 } );
-
-                expect( instance.prop1 ).to.be.a( 'function' );
-                expect( instance.prop2 ).to.be.a( 'function' );
-            });
         });
     });
 });
