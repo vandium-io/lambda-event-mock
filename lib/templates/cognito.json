@@ -1,0 +1,9 @@
+{
+    "datasetName": "datasetName",
+    "eventType": "SyncTrigger",
+    "region": "us-east-1",
+    "identityId": "identityId",
+    "datasetRecords": {},
+    "identityPoolId": "identityPoolId",
+    "version": 2
+}

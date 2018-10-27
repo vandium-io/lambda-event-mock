@@ -11,6 +11,7 @@ describe( 'lib/index', function() {
     [
         'apigateway',
         'cloudwatch',
+        'cognito',
         's3',
         'scheduled',
         'sns',

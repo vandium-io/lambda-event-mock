@@ -104,6 +104,20 @@ describe( 'lib/templates/index', function() {
             });
         });
 
+        describe( '.cognito', function() {
+
+            validateTemplate( 'cognito', (event) => {
+
+                expect( event.datasetName ).to.exist;
+                expect( event.eventType).to.exist;
+                expect( event.region ).to.exist;
+                expect( event.identityId ).to.exist;
+                expect( event.datasetRecords ).to.exist;
+                expect( event.identityPoolId).to.exist;
+                expect( event.version ).to.exist;
+            });
+        });
+
         describe( '.scheduled', function() {
 
             validateTemplate( 'scheduled', (event) => {
