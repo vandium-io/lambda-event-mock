@@ -95,6 +95,15 @@ describe( 'lib/templates/index', function() {
             });
         });
 
+        describe( '.cloudwatch', function() {
+
+            validateTemplate( 'cloudwatch', (event) => {
+
+                expect( event.awslogs ).to.exist;
+                expect( event.awslogs.data ).to.exist;
+            });
+        });
+
         describe( '.scheduled', function() {
 
             validateTemplate( 'scheduled', (event) => {

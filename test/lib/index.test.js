@@ -10,6 +10,7 @@ describe( 'lib/index', function() {
 
     [
         'apigateway',
+        'cloudwatch',
         's3',
         'scheduled',
         'sns',
