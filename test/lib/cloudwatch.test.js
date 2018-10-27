@@ -34,7 +34,7 @@ describe( 'lib/cloudwatch', function() {
                 expect( eventIdentifier.identify( event ) ).to.equal( 'cloudwatch' );
             });
 
-            xit( 'normal operation', function() {
+            it( 'normal operation', function() {
 
                 let event = new CloudwatchEventMock()
                                     .data( 'my-data' )
