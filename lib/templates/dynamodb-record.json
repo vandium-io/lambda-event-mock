@@ -1,0 +1,14 @@
+{
+    "eventID": "1",
+    "eventVersion": "1.0",
+    "dynamodb": {
+        "Keys": {},
+        "StreamViewType": "NEW_AND_OLD_IMAGES",
+        "SequenceNumber": "111",
+        "SizeBytes": 26
+    },
+    "awsRegion": "us-east-1",
+    "eventName": "NOT_SET",
+    "eventSourceARN": "eventsourcearn",
+    "eventSource": "aws:dynamodb"
+}

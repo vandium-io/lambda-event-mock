@@ -150,6 +150,26 @@ describe( 'lib/templates/index', function() {
             });
         });
 
+        describe( '.dynamodb', function() {
+
+            validateRecordTemplate( 'dynamodb', (event,record) => {
+
+                expect( record.eventID ).to.exist;
+                expect( record.eventVersion ).to.exist;
+
+                expect( record.dynamodb ).to.exist;
+                expect( record.dynamodb.Keys ).to.exist;
+                expect( record.dynamodb.StreamViewType ).to.exist;
+                expect( record.dynamodb.SequenceNumber ).to.exist;
+                expect( record.dynamodb.SizeBytes ).to.exist;
+
+                expect( record.awsRegion ).to.exist;
+                expect( record.eventName ).to.exist;
+                expect( record.eventSourceARN ).to.exist;
+                expect( record.eventSource ).to.exist;
+            });
+        });
+
         describe( '.s3', function() {
 
             validateRecordTemplate( 's3', (event,record) => {
