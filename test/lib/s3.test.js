@@ -8,7 +8,7 @@ const eventIdentifier = require( '@vandium/event-identifier' );
 
 const S3EventMock = require( '../../lib/s3' );
 
-describe( 'lib/api', function() {
+describe( 'lib/s3', function() {
 
     describe( 'S3EventMock', function() {
 
