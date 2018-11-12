@@ -5,10 +5,10 @@
         "Keys": {},
         "StreamViewType": "NEW_AND_OLD_IMAGES",
         "SequenceNumber": "111",
-        "SizeBytes": 26
+        "SizeBytes": 0
     },
     "awsRegion": "us-east-1",
-    "eventName": "NOT_SET",
+    "eventName": "INSERT",
     "eventSourceARN": "eventsourcearn",
     "eventSource": "aws:dynamodb"
 }
