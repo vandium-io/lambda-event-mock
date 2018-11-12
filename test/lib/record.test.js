@@ -46,10 +46,9 @@ describe( 'lib/record', function() {
                 expect( templates.myService.render.calledOnce ).to.be.true;
                 expect( templates.myService.render.firstCall.args ).to.eql( [] );
 
-                expect( templates.myService_record.render.calledOnce ).to.be.true;
-                expect( templates.myService_record.render.firstCall.args ).to.eql( [] );
+                expect( templates.myService_record.render.called ).to.be.false;
 
-                expect( instance._event ).to.eql( { Records: [ { one: 1, myService: {} } ] } );
+                expect( instance._event ).to.eql( { Records: [] } );
             });
 
             it( 'different template name than service name', function() {
@@ -59,10 +58,9 @@ describe( 'lib/record', function() {
                 expect( templates.myService.render.calledOnce ).to.be.true;
                 expect( templates.myService.render.firstCall.args ).to.eql( [] );
 
-                expect( templates.myService_record.render.calledOnce ).to.be.true;
-                expect( templates.myService_record.render.firstCall.args ).to.eql( [] );
+                expect( templates.myService_record.render.called ).to.be.false;
 
-                expect( instance._event ).to.eql( { Records: [ { one: 1, myService: {} } ] } );
+                expect( instance._event ).to.eql( { Records: [] } );
             });
         });
 
@@ -72,13 +70,13 @@ describe( 'lib/record', function() {
 
                 let instance = new RecordEventMock( 'myService' );
 
-                expect( instance._event ).to.eql( { Records: [ { one: 1, myService: {} } ] } );
+                expect( instance._event ).to.eql( { Records: [] } );
 
                 // will add another record
                 let returnValue = instance.next();
                 expect( returnValue ).to.equal( instance );
 
-                expect( instance._event ).to.eql( { Records: [ { one: 1, myService: {} }, { one: 1, myService: {} } ] } );
+                expect( instance._event ).to.eql( { Records: [ { one: 1, myService: {} } ] } );
             });
         });
 
