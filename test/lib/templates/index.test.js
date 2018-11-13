@@ -118,6 +118,23 @@ describe( 'lib/templates/index', function() {
             });
         });
 
+        describe( '.config', function() {
+
+            validateTemplate( 'config', (event) => {
+
+                expect( event.invokingEvent ).to.exist;
+                expect( event.ruleParameters).to.exist;
+                expect( event.resultToken ).to.exist;
+                expect( event.eventLeftScope ).to.exist;
+                expect( event.executionRoleArn ).to.exist;
+                expect( event.configRuleArn).to.exist;
+                expect( event.configRuleName ).to.exist;
+                expect( event.configRuleId ).to.exist;
+                expect( event.accountId ).to.exist;
+                expect( event.version ).to.exist;
+            });
+        });
+
         describe( '.scheduled', function() {
 
             validateTemplate( 'scheduled', (event) => {
