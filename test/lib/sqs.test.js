@@ -10,7 +10,7 @@ const eventIdentifier = require( '@vandium/event-identifier' );
 
 const SQSEventMock = require( '../../lib/sqs' );
 
-describe( 'lib/scheduled', function() {
+describe( 'lib/sqs', function() {
 
     describe( 'SQSEventMock', function() {
 
