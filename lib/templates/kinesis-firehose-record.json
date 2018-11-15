@@ -1,0 +1,12 @@
+{
+  "data": "SGVsbG8gV29ybGQ=",
+  "recordId": "record1",
+  "approximateArrivalTimestamp": "{{TIMESTAMP}}",
+  "kinesisRecordMetadata": {
+    "shardId": "shardId-000000000000",
+    "partitionKey": "{{UUID}}",
+    "approximateArrivalTimestamp": "{{UTC}}",
+    "sequenceNumber": "49546986683135544286507457936321625675700192471156785154",
+    "subsequenceNumber": ""
+  }
+}

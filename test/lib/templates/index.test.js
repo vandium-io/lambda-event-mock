@@ -198,6 +198,28 @@ describe( 'lib/templates/index', function() {
             });
         });
 
+        describe( '.kinesisFirehose', function() {
+
+            validateRecordTemplate( 'kinesisFirehose', (event,record) => {
+
+                expect( event.invocationId ).to.exist;
+                expect( event.deliveryStreamArn ).to.exist;
+                expect( event.region ).to.exist;
+                expect( event.records ).to.exist;
+
+                expect( record.data ).to.exist;
+                expect( record.recordId ).to.exist;
+                expect( record.approximateArrivalTimestamp ).to.exist;
+
+                expect( record.kinesisRecordMetadata ).to.exist;
+                expect( record.kinesisRecordMetadata.shardId ).to.exist;
+                expect( record.kinesisRecordMetadata.partitionKey ).to.exist;
+                expect( record.kinesisRecordMetadata.approximateArrivalTimestamp ).to.exist;
+                expect( record.kinesisRecordMetadata.sequenceNumber ).to.exist;
+                expect( record.kinesisRecordMetadata.subsequenceNumber ).to.exist;
+            }, 'kinesis-firehose' );
+        });
+
         describe( '.s3', function() {
 
             validateRecordTemplate( 's3', (event,record) => {

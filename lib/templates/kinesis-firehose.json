@@ -1,0 +1,6 @@
+{
+  "invocationId": "invoked123",
+  "deliveryStreamArn": "aws:lambda:events",
+  "region": "us-east-1",
+  "records": []
+}
