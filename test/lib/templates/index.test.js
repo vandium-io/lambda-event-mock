@@ -135,6 +135,17 @@ describe( 'lib/templates/index', function() {
             });
         });
 
+        describe( '.iotButton', function() {
+
+            validateTemplate( 'iotButton', (event) => {
+
+                expect( event.serialNumber ).to.exist;
+                expect( event.clickType).to.exist;
+                expect( event.batteryVoltage ).to.exist;
+            }, 'iot-button' );
+        });
+
+
         describe( '.scheduled', function() {
 
             validateTemplate( 'scheduled', (event) => {
