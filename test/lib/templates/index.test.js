@@ -145,6 +145,29 @@ describe( 'lib/templates/index', function() {
             }, 'iot-button' );
         });
 
+        describe( '.lex', function() {
+
+            validateTemplate( 'lex', (event) => {
+
+                expect( event.messageVersion ).to.exist;
+                expect( event.invocationSource).to.exist;
+                expect( event.userId ).to.exist;
+
+                expect( event.sessionAttributes ).to.exist;
+
+                expect( event.bot ).to.exist;
+                expect( event.bot.name).to.exist;
+                expect( event.bot.alias ).to.exist;
+                expect( event.bot.version ).to.exist;
+
+                expect( event.outputDialogMode ).to.exist;
+
+                expect( event.currentIntent).to.exist;
+                expect( event.currentIntent.name).to.exist;
+                expect( event.currentIntent.slots).to.exist;
+                expect( event.currentIntent.confirmationStatus).to.exist;
+            });
+        });
 
         describe( '.scheduled', function() {
 

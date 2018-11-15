@@ -1,0 +1,17 @@
+{
+    "messageVersion": "1.0",
+    "invocationSource": "Unknown",
+    "userId": "user-id",
+    "sessionAttributes": {},
+    "bot": {
+        "name": "bot-name",
+        "alias": "bot-alias",
+        "version": "1.0"
+    },
+    "outputDialogMode": "Text",
+    "currentIntent": {
+        "name": "intent-name",
+        "slots": {},
+        "confirmationStatus": "None"
+    }
+}
