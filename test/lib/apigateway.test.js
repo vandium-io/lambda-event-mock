@@ -22,6 +22,20 @@ describe( 'lib/api', function() {
             expect( instance.queryStringParameters ).to.exist;
         });
 
+        describe( '.path', function() {
+
+            it( 'normal operation', function() {
+
+                let instance = new APIGatewayEventMock();
+
+                let returnValue = instance.path( '/whatever' );
+                expect( returnValue ).to.equal( instance );
+
+                expect( instance._event.path ).to.equal( '/whatever' );
+                expect( instance._event.resource ).to.equal( '/whatever' );
+            });
+        });
+
         describe( '.body', function() {
 
             it( 'body is a string', function() {
