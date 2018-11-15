@@ -5,18 +5,18 @@
 
 Mocking library for AWS Lambda events
 
-## Features
+# Features
 * Easy to use builder-pattern to create mock lambda events for testing
 * Works with [lambda-tester](https://github.com/vandium-io/lambda-tester)
 * Works with Node 8.x
 
-## Installation
+# Installation
 Install via npm.
 
 	npm install lambda-event-mock --save-dev
 
 
-## Getting Started
+# Getting Started
 
 The following example code creates an `s3` lambda event for the object
 `picture1.gif` in the `my-bucket-uploaded-pictures` bucket.
@@ -75,18 +75,20 @@ let myMock = lambdaEventMock.s3()
 Note that `lambda-event-mock` fills in the time, date, and other properties of
 the event to create a realistic looking event.
 
-## Documentation
+# Event Types
 
-For documentation on how to use this module in your project, please see our
-[documentation](docs) page.
+`lambda-event-mock` supports the following lambda events:
 
-## Feedback
-
-We'd love to get feedback on how you're using lambda-event-mock and things we
-could add to make this tool better. Feel free to contact us at
-`feedback@vandium.io`
+- [api](apigateway.md)
 
 
-## License
+
+# Feedback
+
+We'd love to get feedback on how to make this tool better. Feel free to contact
+us at `feedback@vandium.io`
+
+
+# License
 
 [BSD-3-Clause](https://en.wikipedia.org/wiki/BSD_licenses)
