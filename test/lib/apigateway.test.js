@@ -33,6 +33,7 @@ describe( 'lib/api', function() {
 
                 expect( instance._event.path ).to.equal( '/whatever' );
                 expect( instance._event.resource ).to.equal( '/whatever' );
+                expect( instance._event.requestContext.resourcePath ).to.equal( '/whatever' );
             });
         });
 
@@ -152,19 +153,22 @@ describe( 'lib/api', function() {
 
                 let event = new APIGatewayEventMock()
                                     .method( 'POST' )
+                                    .path( '/things/Friday' )
                                     .body( { one: 1, two: 2 } )
-                                    .queryStringParameter( 'expanded', true )
+                                    .queryStringParameter( 'expanded', 'true' )
+                                    .stageVariable( 'DEBUG_LEVEL', 'info' )
+                                    .pathParameter( 'day', 'Friday' )
                                     .build();
 
-                expect( event.resource ).to.equal( '/' );
-                expect( event.path ).to.equal( '/' );
+                expect( event.resource ).to.equal( '/things/Friday' );
+                expect( event.path ).to.equal( '/things/Friday' );
                 expect( event.httpMethod ).to.equal( 'POST' );
                 expect( event.headers ).to.be.null;
-                expect( event.queryStringParameters ).to.eql( { expanded: true } );
-                expect( event.pathParameters ).to.be.null;
-                expect( event.stageVariables ).to.be.null;
+                expect( event.queryStringParameters ).to.eql( { expanded: 'true' } );
+                expect( event.pathParameters ).to.eql( { day: 'Friday' } );
+                expect( event.stageVariables ).to.eql( { DEBUG_LEVEL: 'info' } );
                 expect( event.requestContext ).to.exist;
-                expect( event.requestContext.resourcePath ).to.equal( '/' );
+                expect( event.requestContext.resourcePath ).to.equal( '/things/Friday' );
                 expect( event.requestContext.apiId ).to.equal( '00aaa0a00a' );
                 expect( event.body ).to.equal( '{"one":1,"two":2}');
                 expect( event.isBase64Encoded ).to.be.false;
