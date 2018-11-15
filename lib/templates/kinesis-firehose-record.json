@@ -1,5 +1,5 @@
 {
-  "data": "SGVsbG8gV29ybGQ=",
+  "data": "",
   "recordId": "record1",
   "approximateArrivalTimestamp": "{{TIMESTAMP}}",
   "kinesisRecordMetadata": {
