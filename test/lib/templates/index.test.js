@@ -198,9 +198,9 @@ describe( 'lib/templates/index', function() {
             });
         });
 
-        describe( '.kinesisFirehose', function() {
+        describe( '.kinesis_firehose', function() {
 
-            validateRecordTemplate( 'kinesisFirehose', (event,record) => {
+            validateRecordTemplate( 'kinesis_firehose', (event,record) => {
 
                 expect( event.invocationId ).to.exist;
                 expect( event.deliveryStreamArn ).to.exist;
