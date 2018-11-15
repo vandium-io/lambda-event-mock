@@ -276,9 +276,22 @@ describe( 'lib/templates/index', function() {
                 expect( record.eventName ).to.exist;
                 expect( record.userIdentity ).to.exist;
                 expect( record.eventSource ).to.exist;
-
             });
         });
+
+        describe( '.ses', function() {
+
+            validateRecordTemplate( 'ses', (event,record) => {
+
+                expect( record.eventVersion ).to.exist;
+                expect( record.eventSource ).to.exist;
+
+                expect( record.ses ).to.exist;
+                expect( record.ses.mail ).to.exist;
+                expect( record.ses.receipt ).to.exist;
+            });
+        });
+
 
         describe( '.sns', function() {
 

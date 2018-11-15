@@ -1,0 +1,37 @@
+{
+    "eventVersion": "1.0",
+    "ses": {
+        "mail": {
+            "commonHeaders": {},
+            "source": "unknown@unknown.com",
+            "timestamp": "{{UTC}}",
+            "destination": [],
+            "headers": [],
+            "headersTruncated": false,
+            "messageId": "o3vrnil0e2ic28trm7dfhrc2v0clambda4nbp0g1x"
+        },
+        "receipt": {
+            "recipients": [],
+            "timestamp": "{{UTC}}",
+            "spamVerdict": {
+                "status": "PASS"
+            },
+            "dkimVerdict": {
+                "status": "PASS"
+            },
+            "processingTimeMillis": 574,
+            "action": {
+                "type": "Lambda",
+                "invocationType": "Event",
+                "functionArn": "functionarn"
+            },
+            "spfVerdict": {
+                "status": "PASS"
+            },
+            "virusVerdict": {
+                "status": "PASS"
+            }
+        }
+    },
+    "eventSource": "aws:ses"
+}

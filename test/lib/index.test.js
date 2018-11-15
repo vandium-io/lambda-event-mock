@@ -20,6 +20,7 @@ describe( 'lib/index', function() {
         'kinesis',
         'lex',
         's3',
+        'ses',
         'scheduled',
         'sns',
         'sqs'
