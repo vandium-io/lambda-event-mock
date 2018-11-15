@@ -198,6 +198,25 @@ describe( 'lib/templates/index', function() {
             });
         });
 
+        describe( '.kinesis', function() {
+
+            validateRecordTemplate( 'kinesis', (event,record) => {
+
+                expect( record.eventID ).to.exist;
+                expect( record.eventVersion ).to.exist;
+                expect( record.invokeIdentityArn ).to.exist;
+                expect( record.eventName ).to.exist;
+                expect( record.eventSource ).to.exist;
+                expect( record.awsRegion ).to.exist;
+
+                expect( record.kinesis ).to.exist;
+                expect( record.kinesis.partitionKey ).to.exist;
+                expect( record.kinesis.data ).to.exist;
+                expect( record.kinesis.kinesisSchemaVersion ).to.exist;
+                expect( record.kinesis.sequenceNumber ).to.exist;
+            });
+        });
+
         describe( '.kinesis_firehose', function() {
 
             validateRecordTemplate( 'kinesis_firehose', (event,record) => {
