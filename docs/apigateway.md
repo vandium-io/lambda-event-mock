@@ -1,9 +1,9 @@
-# `api` Event Mock
+# `apigateway`
 
-The `api` mock is used to simulate [AWS API Gateway](https://aws.amazon.com/api-gateway) events using the Lambda Proxy based method. To create an API Gateway mock event, use the `apigateway()` builder:
+The `apigateway` mock is used to simulate [AWS API Gateway](https://aws.amazon.com/api-gateway) events using the Lambda Proxy based method. To create an API Gateway mock event, use the `apigateway()` builder:
 
 ```js
-const lambdaEventMock = require( '.' );
+const lambdaEventMock = require( 'lambda-event-mock' );
 
 let myMock = lambdaEventMock.apigateway()
                     .path( '/things' )
@@ -35,13 +35,10 @@ let myMock = lambdaEventMock.apigateway()
 */
 ```
 
-## `path( p )`
+## `apiId( id )`
 
-Sets the event's `path` and `resource` properties.
+Sets the event's `requestContext.apiId` property
 
-## `method( m )`
-
-Sets the event's `httpMethod` property.
 
 ## `body( value )`
 
@@ -49,10 +46,6 @@ Sets the event's `body` and `isBase64Encoded` properties. `body()` will encode
 `Buffer` instances as `base64` encoded strings and set the `isBase64Encoded`
 property to true. `Object` instances are converted to strings using `JSON.stringify()`.
 All other types are converted, if required, and stored as strings.
-
-## `apiId( id )`
-
-Sets the event's `requestContext.apiId` property
 
 ## `header( name, value )`
 
@@ -86,6 +79,14 @@ myMock.headers will equal:
 
 */
 ```
+
+## `method( m )`
+
+Sets the event's `httpMethod` property.
+
+## `path( p )`
+
+Sets the event's `path` and `resource` properties.
 
 ## `queryStringParameter( name, value )`
 
