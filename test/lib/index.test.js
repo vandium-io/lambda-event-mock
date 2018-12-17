@@ -9,7 +9,7 @@ const eventMock = require( '../../lib/index' );
 describe( 'lib/index', function() {
 
     [
-        'apigateway',
+        'apiGateway',
         'cloudformation',
         'cloudwatch',
         'cognito',

@@ -1,11 +1,11 @@
-# `apigateway`
+# `API Gateway`
 
-The `apigateway` mock is used to simulate [AWS API Gateway](https://aws.amazon.com/api-gateway) events using the Lambda Proxy based method. To create an API Gateway mock event, use the `apigateway()` builder:
+The `apiGateway` mock is used to simulate [AWS API Gateway](https://aws.amazon.com/api-gateway) events using the Lambda Proxy based method. To create an API Gateway mock event, use the `apiGateway()` builder:
 
 ```js
 const lambdaEventMock = require( 'lambda-event-mock' );
 
-let myMock = lambdaEventMock.apigateway()
+let myMock = lambdaEventMock.apiGateway()
                     .path( '/things' )
                     .method( 'POST' )
                     .header( 'day', 'Friday' )
@@ -59,7 +59,7 @@ sample code demonstrates how to set one or more headers:
 ```js
 const lambdaEventMock = require( '.' );
 
-let myMock = lambdaEventMock.apigateway()
+let myMock = lambdaEventMock.apiGateway()
                     .headers( {
 
                         day: 'Friday',
@@ -101,7 +101,7 @@ sample code demonstrates how to set one or more query string parameter values:
 ```js
 const lambdaEventMock = require( '.' );
 
-let myMock = lambdaEventMock.apigateway()
+let myMock = lambdaEventMock.apiGateway()
                     .queryStringParameters( {
 
                         expanded: 'true',
@@ -121,3 +121,12 @@ myMock.headers will equal:
 
 */
 ```
+
+## `stageVariable( name, value )`
+
+Sets an individual value in the event's `stageVariables` property.
+
+## `stageVariables( variables )`
+
+Sets one or more stage variables in the event's `stageVariables` property. The
+syntax of this method is similar to that of `queryStringParameters()`.
