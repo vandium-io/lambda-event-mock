@@ -3,7 +3,8 @@
 
 # lambda-event-mock
 
-Mocking library for AWS Lambda events
+Mocking library for testing AWS Lambda events by creating realistic events that
+contain dynamic data.
 
 ## Features
 * Easy to use builder-pattern to create mock lambda events for testing

@@ -28,6 +28,8 @@ describe( 'lib/cloudformation', function() {
                                     .responseURL( 'my-responseURL' )
                                     .requestType( 'my-requestType' )
                                     .requestId( 'my-requestId' )
+                                    .resourceProperty( 'StackName', 'my-stack' )
+                                    .resourceProperties( { other: 'test' } )
                                     .logicalResourceId( 'my-requestId' )
                                     .build();
 
@@ -36,6 +38,9 @@ describe( 'lib/cloudformation', function() {
                 expect( event.RequestType ).to.eql( 'my-requestType' );
                 expect( event.RequestId ).to.equal( 'my-requestId');
                 expect( event.LogicalResourceId ).to.equal( 'my-requestId' );
+
+                console.log( event );
+                expect( event.ResourceProperties ).to.eql( { StackName: 'my-stack', other: 'test' } );
 
                 expect( eventIdentifier.identify( event ) ).to.equal( 'cloudformation' );
             });

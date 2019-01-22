@@ -2,12 +2,7 @@
   "StackId": "stackidarn",
   "ResponseURL": "http://pre-signed-S3-url-for-response",
   "ResourceProperties": {
-    "StackName": "stack-name",
-    "List": [
-      "1",
-      "2",
-      "3"
-    ]
+    "StackName": "stack-name"
   },
   "RequestType": "Create",
   "ResourceType": "Custom::TestResource",
