@@ -1,7 +1,7 @@
-# `Cloud Formation`
+# `CloudFormation`
 
-The `cloudformation` mock is used to simulate [Cloud Formation](https://aws.amazon.com/cloudformation/)
-events. To create a Cloud Formation event, use the `cloudformation()` builder:
+The `cloudformation` mock is used to simulate [CloudFormation](https://aws.amazon.com/cloudformation/)
+events. To create a CloudFormation event, use the `cloudformation()` builder:
 
 ```js
 const lambdaEventMock = require( 'lambda-event-mock' );

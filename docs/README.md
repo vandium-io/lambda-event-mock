@@ -81,7 +81,7 @@ the event to create a realistic looking event.
 `lambda-event-mock` supports the following lambda events:
 
 - [API Gateway](apigateway.md)
-- [Cloud Formation](cloudformation.md)
+- [CloudFormation](cloudformation.md)
 
 
 # Feedback
