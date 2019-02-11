@@ -63,6 +63,16 @@ describe( 'lib/utils', function() {
         });
     });
 
+    describe( '.lowercaseFirstLetter', function() {
+
+        it( 'normal operation', function() {
+
+            expect( utils.lowercaseFirstLetter( 'MyMethod' ) ).to.equal( 'myMethod' );
+            expect( utils.lowercaseFirstLetter( 'myOtherMethod' ) ).to.equal( 'myOtherMethod' );
+            expect( utils.lowercaseFirstLetter( 'X' ) ).to.equal( 'x' );
+        });
+    });
+
     describe( '.uuid', function() {
 
         it( 'normal operation', function() {
