@@ -8,59 +8,53 @@ const eventIdentifier = require( '@vandium/event-identifier' );
 
 const CloudfrontEventMock = require( '../../lib/cloudfront' );
 
+const utils = require( '../../lib/utils' );
+
 describe( 'lib/api', function() {
 
     describe( 'CloudfrontEventMock', function() {
 
-        describe( '.distributionId', function() {
+        // simplet tests
+        [
+            [ 'distributionId', 'MyId', 'config' ],
+            [ 'distributionDomainName', 'MyDistName', 'config' ],
+            [ 'eventType', 'MyEventType', 'config' ],
+            [ 'requestId', 'MyRequestId', 'config' ],
 
-            it( 'normal operation', function() {
+            [ 'body', { data: 'whatever' }, 'request'],
+            [ 'clientIp', '2.3.4.5', 'request'],
+            [ 'method', '4.5.6.7', 'request' ],
+            [ 'uri', 'DELETE', 'request' ],
+            [ 'querystring', 'MyQueryString', 'request' ],
+            [ 'origin', { whatever: 'ok' }, 'request' ]
 
-                let instance = new CloudfrontEventMock();
+        ].forEach( function( testParams ) {
 
-                let returnValue = instance.distributionId( 'abcd' );
+            const method = testParams[0];
+            const data = testParams[1];
+            const targetObj = testParams[2];
 
-                expect( returnValue ).to.equal( instance );
-                expect( instance.objectValue.config.distributionId ).to.equal( 'abcd' );
-            });
-        });
+            describe( `.${method}`, function() {
 
-        describe( '.clientIp', function() {
+                it( 'normal operation', function() {
 
-            it( 'normal operation', function() {
+                    let instance = new CloudfrontEventMock();
 
-                let instance = new CloudfrontEventMock();
+                    let returnValue = instance[method]( data );
 
-                let returnValue = instance.clientIp( '2.3.4.5' );
+                    expect( returnValue ).to.equal( instance );
 
-                expect( returnValue ).to.equal( instance );
-                expect( instance.objectValue.request.clientIp ).to.equal( '2.3.4.5' );
-            });
-        });
+                    if( utils.isObject( data ) ) {
 
-        describe( '.method', function() {
+                        // value should be cloned
+                        expect( instance.objectValue[targetObj][method] ).to.eql( data );
+                        expect( instance.objectValue[targetObj][method] ).to.not.equal( data );
+                    }
+                    else {
 
-            it( 'normal operation', function() {
-
-                let instance = new CloudfrontEventMock();
-
-                let returnValue = instance.method( 'DELETE' );
-
-                expect( returnValue ).to.equal( instance );
-                expect( instance.objectValue.request.method ).to.equal( 'DELETE' );
-            });
-        });
-
-        describe( '.uri', function() {
-
-            it( 'normal operation', function() {
-
-                let instance = new CloudfrontEventMock();
-
-                let returnValue = instance.uri( 'my-uri' );
-
-                expect( returnValue ).to.equal( instance );
-                expect( instance.objectValue.request.uri ).to.equal( 'my-uri' );
+                        expect( instance.objectValue[targetObj][method] ).to.equal( data );
+                    }
+                });
             });
         });
 
