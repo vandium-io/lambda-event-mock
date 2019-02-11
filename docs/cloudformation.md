@@ -33,11 +33,20 @@ let myMock = lambdaEventMock.cloudformation()
 
 ## `stackId( id )`
 
+Sets the `StackId` property
 
 ## `responseURL( url )`
 
+Sets the `ResponseURL` property
+
 ## `resourceType( type )`
+
+Sets the `ResourceType` property
 
 ## `resourceProperty( name, value )`
 
+Adds a single resource property to the `ResourceProperties` object
+
 ## `resourceProperties( properties )`
+
+Sets one or more values of the `ResourceProperties` object
