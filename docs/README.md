@@ -82,6 +82,7 @@ the event to create a realistic looking event.
 
 - [API Gateway](apigateway.md)
 - [CloudFormation](cloudformation.md)
+- [CloudFront](cloudfront.md)
 
 
 # Feedback

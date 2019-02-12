@@ -11,6 +11,7 @@ describe( 'lib/index', function() {
     [
         'apiGateway',
         'cloudformation',
+        'cloudfront',
         'cloudwatch',
         'cognito',
         'config',
