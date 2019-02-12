@@ -103,3 +103,6 @@ Sets the `request.origin` property in the current record
 
 ## `header( name, key, value )`
 Adds a header object to the `request.headers` property in the current record
+
+## `next()`
+Advances to the next record. Use this method to add multiple records to the event.
