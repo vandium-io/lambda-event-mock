@@ -20,7 +20,7 @@ describe( 'lib/sqs', function() {
 
                 let event = new SQSEventMock().build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'sqs' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'sqs' );
             });
 
             it( 'normal operation', function() {
@@ -38,7 +38,7 @@ describe( 'lib/sqs', function() {
                 expect( event.Records[0].body ).to.equal( 'body-here' );
                 expect( event.Records[0].md5OfBody ).to.equal( crypto.createHash( 'md5' ).update( event.Records[0].body ).digest( 'hex' ) );
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'sqs' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'sqs' );
             });
 
             it( 'normal operation, body is a buffer', function() {
@@ -56,7 +56,7 @@ describe( 'lib/sqs', function() {
                 expect( event.Records[0].body ).to.equal( new Buffer( 'body-here' ).toString( 'base64') );
                 expect( event.Records[0].md5OfBody ).to.equal( crypto.createHash( 'md5' ).update( event.Records[0].body ).digest( 'hex' ) );
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'sqs' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'sqs' );
             });
         });
     });

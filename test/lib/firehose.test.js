@@ -31,7 +31,7 @@ describe( 'lib/firehose', function() {
 
                 let event = new FirehoseEventMock().build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'kinesis-firehose' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'kinesis-firehose' );
 
                 expect( event.invocationId ).to.exist;
                 expect( event.deliveryStreamArn ).to.exist;
@@ -45,7 +45,7 @@ describe( 'lib/firehose', function() {
 
                 let event = new FirehoseEventMock().next().next().build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'kinesis-firehose' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'kinesis-firehose' );
 
                 expect( event.records.length ).to.equal( 2 );
                 expect( event.records[0].recordId ).to.equal( 'record1' );

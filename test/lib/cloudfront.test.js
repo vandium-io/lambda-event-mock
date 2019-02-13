@@ -95,7 +95,7 @@ describe( 'lib/api', function() {
 
                 let event = new CloudfrontEventMock().build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'cloudfront' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'cloudfront' );
             });
 
             it( 'default values', function() {

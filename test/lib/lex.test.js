@@ -18,7 +18,7 @@ describe( 'lib/config', function() {
 
                 let event = new LexEventMock().build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'lex' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'lex' );
             });
 
             it( 'normal operation', function() {
@@ -40,7 +40,7 @@ describe( 'lib/config', function() {
                 expect( event.bot ).to.eql( { name: 'test', alias: 'my-test', version: '2.0' } );
                 expect( event.currentIntent ).to.eql( { name: 'my-intent-name', slots: {}, confirmationStatus: 'Confirmed' } );
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'lex' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'lex' );
             });
         });
     });

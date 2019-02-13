@@ -33,7 +33,7 @@ describe( 'lib/cognito', function() {
 
                 let event = new CognitoEventMock().build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'cognito' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'cognito' );
             });
 
             it( 'normal operation', function() {

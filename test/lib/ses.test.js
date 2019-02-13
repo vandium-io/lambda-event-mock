@@ -18,7 +18,7 @@ describe( 'lib/ses', function() {
 
                 let event = new SESEventMock().build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'ses' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'ses' );
 
                 expect( event.Records ).to.exist;
                 expect( event.Records.length ).to.equal( 1 );
@@ -42,7 +42,7 @@ describe( 'lib/ses', function() {
                                     .receiptValue( 'dkimVerdict', { status: 'PASS' } )
                                     .build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'ses' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'ses' );
 
                 expect( event.Records.length ).to.equal( 1 );
                 expect( event.Records[0].ses.mail.commonHeaders ).to.eql( {

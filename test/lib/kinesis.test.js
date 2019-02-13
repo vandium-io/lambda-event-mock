@@ -31,7 +31,7 @@ describe( 'lib/kinesis', function() {
 
                 let event = new KinesisEventMock().build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'kinesis' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'kinesis' );
             });
 
             it( 'normal operation', function() {
@@ -40,7 +40,7 @@ describe( 'lib/kinesis', function() {
                                     .data( 'dGVzdGluZw==' )
                                     .build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'kinesis' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'kinesis' );
 
                 expect( event.Records[0].kinesis.data ).to.equal( 'dGVzdGluZw==' );
             });

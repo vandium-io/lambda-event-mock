@@ -18,7 +18,7 @@ describe( 'lib/config', function() {
 
                 let event = new IoTButtonEventMock().build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'iot-button' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'iot-button' );
             });
 
             it( 'normal operation', function() {
@@ -37,7 +37,7 @@ describe( 'lib/config', function() {
                 expect( event.clickType ).to.equal( 'DOUBLE' );
                 expect( event.batteryVoltage ).to.eql( '5000 mV' );
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'iot-button' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'iot-button' );
             });
         });
     });

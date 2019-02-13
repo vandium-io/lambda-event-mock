@@ -8,7 +8,7 @@ const eventIdentifier = require( '@vandium/event-identifier' );
 
 const SNSEventMock = require( '../../lib/sns' );
 
-describe( 'lib/api', function() {
+describe( 'lib/sns', function() {
 
     describe( 'SNSEventMock', function() {
 
@@ -18,7 +18,7 @@ describe( 'lib/api', function() {
 
                 let event = new SNSEventMock().build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'sns' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'sns' );
             });
 
             it( 'normal operation', function() {
@@ -56,7 +56,7 @@ describe( 'lib/api', function() {
                 expect( event.Records[0].Sns.Signature ).to.equal( 'XXXX' );
                 expect( event.Records[0].Sns.SigningCertUrl ).to.equal( 'TEST' );
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'sns' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'sns' );
             });
 
 
@@ -123,7 +123,7 @@ describe( 'lib/api', function() {
                 expect( event.Records[1].Sns.Signature ).to.equal( 'XXXX-2' );
                 expect( event.Records[1].Sns.SigningCertUrl ).to.equal( 'TEST-2' );
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'sns' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'sns' );
             });
         });
     });

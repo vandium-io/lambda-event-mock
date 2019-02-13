@@ -11,7 +11,7 @@ const templates = require( '../../../lib/templates' );
 
 describe( 'lib/templates/index', function() {
 
-    function validateTemplate( name, verifier, type = name ) {
+    function validateTemplate( name, verifier, type = name, source = null ) {
 
         it( 'normal operation', function() {
 
@@ -20,7 +20,14 @@ describe( 'lib/templates/index', function() {
 
             let event = templates[ name ].render();
 
-            expect( eventIdentifier.identify( event ) ).to.equal( type );
+            let identity = eventIdentifier.identify( event );
+
+            expect( identity.type ).to.equal( type );
+
+            if( source ) {
+
+                expect( identity.source ).to.equal( source );
+            }
 
             verifier( event );
         });
@@ -57,7 +64,7 @@ describe( 'lib/templates/index', function() {
                 event.records.push( record );
             }
 
-            expect( eventIdentifier.identify( event ) ).to.equal( type );
+            expect( eventIdentifier.identify( event ).type ).to.equal( type );
 
             verifier( event, record );
         });
@@ -95,13 +102,13 @@ describe( 'lib/templates/index', function() {
             });
         });
 
-        describe( '.cloudwatch', function() {
+        describe( '.cloudwatch-logs', function() {
 
-            validateTemplate( 'cloudwatch', (event) => {
+            validateTemplate( 'cloudwatch-logs', (event) => {
 
                 expect( event.awslogs ).to.exist;
                 expect( event.awslogs.data ).to.exist;
-            });
+            }, 'cloudwatch', 'logs');
         });
 
         describe( '.cognito', function() {
@@ -135,14 +142,14 @@ describe( 'lib/templates/index', function() {
             });
         });
 
-        describe( '.iotButton', function() {
+        describe( '.iot-button', function() {
 
-            validateTemplate( 'iotButton', (event) => {
+            validateTemplate( 'iot-button', (event) => {
 
                 expect( event.serialNumber ).to.exist;
                 expect( event.clickType).to.exist;
                 expect( event.batteryVoltage ).to.exist;
-            }, 'iot-button' );
+            });
         });
 
         describe( '.lex', function() {
@@ -171,7 +178,7 @@ describe( 'lib/templates/index', function() {
 
         describe( '.scheduled', function() {
 
-            validateTemplate( 'scheduled', (event) => {
+            validateTemplate( 'cloudwatch', (event) => {
 
                 expect( event.account ).to.exist;
                 expect( event.region ).to.exist;
@@ -240,9 +247,9 @@ describe( 'lib/templates/index', function() {
             });
         });
 
-        describe( '.kinesis_firehose', function() {
+        describe( '.kinesis-firehose', function() {
 
-            validateRecordTemplate( 'kinesis_firehose', (event,record) => {
+            validateRecordTemplate( 'kinesis-firehose', (event,record) => {
 
                 expect( event.invocationId ).to.exist;
                 expect( event.deliveryStreamArn ).to.exist;
@@ -259,7 +266,7 @@ describe( 'lib/templates/index', function() {
                 expect( record.kinesisRecordMetadata.approximateArrivalTimestamp ).to.exist;
                 expect( record.kinesisRecordMetadata.sequenceNumber ).to.exist;
                 expect( record.kinesisRecordMetadata.subsequenceNumber ).to.exist;
-            }, 'kinesis-firehose' );
+            });
         });
 
         describe( '.s3', function() {

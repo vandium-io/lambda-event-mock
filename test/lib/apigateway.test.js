@@ -146,7 +146,7 @@ describe( 'lib/api', function() {
                 expect( event.body ).to.be.null;
                 expect( event.isBase64Encoded ).to.be.false;
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'apigateway' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'apigateway' );
             });
 
             it( 'simple', function() {
@@ -173,7 +173,7 @@ describe( 'lib/api', function() {
                 expect( event.body ).to.equal( '{"one":1,"two":2}');
                 expect( event.isBase64Encoded ).to.be.false;
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'apigateway' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'apigateway' );
             });
 
             it( 'buffer body', function() {
@@ -197,7 +197,7 @@ describe( 'lib/api', function() {
                 expect( event.body ).to.equal( new Buffer( '{"one":1,"two":2}' ).toString( 'base64' ) );
                 expect( event.isBase64Encoded ).to.be.true;
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'apigateway' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'apigateway' );
             });
         });
     });

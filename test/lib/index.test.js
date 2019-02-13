@@ -13,6 +13,7 @@ describe( 'lib/index', function() {
         'cloudformation',
         'cloudfront',
         'cloudwatch',
+        'cloudwatchLogs',
         'cognito',
         'config',
         'dynamodb',
@@ -22,7 +23,6 @@ describe( 'lib/index', function() {
         'lex',
         's3',
         'ses',
-        'scheduled',
         'sns',
         'sqs'
 

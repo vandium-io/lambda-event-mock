@@ -18,7 +18,7 @@ describe( 'lib/s3', function() {
 
                 let event = new S3EventMock().build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 's3' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 's3' );
             });
 
             it( 'normal operation', function() {
@@ -39,7 +39,7 @@ describe( 'lib/s3', function() {
                 expect( event.Records[0].s3.object.sequencer ).to.exist;
                 expect( event.Records[0].s3.bucket.name ).to.equal( 'bucket-one' );
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 's3' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 's3' );
             });
 
             it( 'multiple records', function() {
@@ -74,7 +74,7 @@ describe( 'lib/s3', function() {
                 expect( event.Records[1].s3.object.sequencer ).to.exist;
                 expect( event.Records[1].s3.bucket.name ).to.equal( 'bucket-two' );
                 expect( event.Records[1].s3.eventName ).to.equal( 's3:ObjectRemoved:Delete' );
-                expect( eventIdentifier.identify( event ) ).to.equal( 's3' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 's3' );
             });
         });
     });

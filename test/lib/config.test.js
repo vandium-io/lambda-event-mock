@@ -18,7 +18,7 @@ describe( 'lib/config', function() {
 
                 let event = new ConfigEventMock().build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'config' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'config' );
             });
 
             it( 'normal operation', function() {
@@ -41,7 +41,7 @@ describe( 'lib/config', function() {
                 expect( event.resultToken ).to.equal( 'my-result-token' );
                 expect( event.ruleParameters ).to.equal( 'my-rule-parameters' );
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'config' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'config' );
             });
         });
     });

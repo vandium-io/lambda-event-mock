@@ -34,7 +34,7 @@ describe( 'lib/dynamodb', function() {
 
                 let event = new DynamoDBEventMock().build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'dynamodb' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'dynamodb' );
             });
 
             it( 'validate SizeBytes', function() {
@@ -58,7 +58,7 @@ describe( 'lib/dynamodb', function() {
                                 .build();
 
                 expect( event1.Records[0].dynamodb.SizeBytes ).to.equal( 26 );
-                expect( eventIdentifier.identify( event1 ) ).to.equal( 'dynamodb' );
+                expect( eventIdentifier.identify( event1 ).type ).to.equal( 'dynamodb' );
 
                 let event2 = new DynamoDBEventMock()
                                     .keys( {
@@ -85,7 +85,7 @@ describe( 'lib/dynamodb', function() {
                                     .build();
 
                 expect( event2.Records[0].dynamodb.SizeBytes ).to.equal( 59 );
-                expect( eventIdentifier.identify( event2 ) ).to.equal( 'dynamodb' );
+                expect( eventIdentifier.identify( event2 ).type ).to.equal( 'dynamodb' );
 
                 let event3 = new DynamoDBEventMock()
                                     .keys( {
@@ -113,7 +113,7 @@ describe( 'lib/dynamodb', function() {
                                     .build();
 
                 expect( event3.Records[0].dynamodb.SizeBytes ).to.equal( 45 );
-                expect( eventIdentifier.identify( event3 ) ).to.equal( 'dynamodb' );
+                expect( eventIdentifier.identify( event3 ).type ).to.equal( 'dynamodb' );
             });
 
             it( 'validate StreamViewType', function() {
@@ -129,7 +129,7 @@ describe( 'lib/dynamodb', function() {
                                 .build();
 
                 expect( event1.Records[0].dynamodb.StreamViewType ).to.equal( 'KEYS_ONLY' );
-                expect( eventIdentifier.identify( event1 ) ).to.equal( 'dynamodb' );
+                expect( eventIdentifier.identify( event1 ).type ).to.equal( 'dynamodb' );
 
                 let event2 = new DynamoDBEventMock()
                                     .keys( {
@@ -148,7 +148,7 @@ describe( 'lib/dynamodb', function() {
                                     .build();
 
                 expect( event2.Records[0].dynamodb.StreamViewType ).to.equal( 'OLD_IMAGE' );
-                expect( eventIdentifier.identify( event2 ) ).to.equal( 'dynamodb' );
+                expect( eventIdentifier.identify( event2 ).type ).to.equal( 'dynamodb' );
 
                 let event3 = new DynamoDBEventMock()
                                     .keys( {
@@ -167,7 +167,7 @@ describe( 'lib/dynamodb', function() {
                                     .build();
 
                 expect( event3.Records[0].dynamodb.StreamViewType ).to.equal( 'NEW_IMAGE' );
-                expect( eventIdentifier.identify( event3 ) ).to.equal( 'dynamodb' );
+                expect( eventIdentifier.identify( event3 ).type ).to.equal( 'dynamodb' );
 
                 let event4 = new DynamoDBEventMock()
                                     .keys( {
@@ -194,7 +194,7 @@ describe( 'lib/dynamodb', function() {
                                     .build();
 
                 expect( event4.Records[0].dynamodb.StreamViewType ).to.equal( 'NEW_AND_OLD_IMAGES' );
-                expect( eventIdentifier.identify( event4 ) ).to.equal( 'dynamodb' );
+                expect( eventIdentifier.identify( event4 ).type ).to.equal( 'dynamodb' );
             });
         });
     });

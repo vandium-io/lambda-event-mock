@@ -18,7 +18,7 @@ describe( 'lib/cloudformation', function() {
 
                 let event = new CloudformationEventMock().build();
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'cloudformation' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'cloudformation' );
             });
 
             it( 'normal operation', function() {
@@ -40,7 +40,7 @@ describe( 'lib/cloudformation', function() {
                 expect( event.LogicalResourceId ).to.equal( 'my-requestId' );
                 expect( event.ResourceProperties ).to.eql( { other: 'test' } );
 
-                expect( eventIdentifier.identify( event ) ).to.equal( 'cloudformation' );
+                expect( eventIdentifier.identify( event ).type ).to.equal( 'cloudformation' );
             });
         });
     });
