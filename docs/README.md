@@ -78,11 +78,14 @@ the event to create a realistic looking event.
 
 # Event Types
 
+**Note:** Documentation is incomplete
+
 `lambda-event-mock` supports the following lambda events:
 
 - [API Gateway](apigateway.md)
 - [CloudFormation](cloudformation.md)
 - [CloudFront](cloudfront.md)
+
 
 
 # Feedback
