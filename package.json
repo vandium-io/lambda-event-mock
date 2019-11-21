@@ -1,6 +1,6 @@
 {
   "name": "lambda-event-mock",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "Mocks AWS Lambda events",
   "main": "lib/index.js",
   "keywords": [
@@ -17,7 +17,7 @@
     "url": "https://github.com/vandium-io/lambda-event-mock.git"
   },
   "engines": {
-    "node": ">=8.10"
+    "node": ">=12.13"
   },
   "scripts": {
     "test": "nyc mocha --recursive"
