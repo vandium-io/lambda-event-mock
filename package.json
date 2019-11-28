@@ -1,6 +1,6 @@
 {
   "name": "lambda-event-mock",
-  "version": "2.0.0",
+  "version": "2.0.0-beta1",
   "description": "Mocks AWS Lambda events",
   "main": "lib/index.js",
   "keywords": [
@@ -19,6 +19,9 @@
   "engines": {
     "node": ">=10.0"
   },
+  "files": [
+    "/lib"
+  ],
   "scripts": {
     "test": "nyc mocha 'lib/**/__tests__/*' --recursive"
   },
