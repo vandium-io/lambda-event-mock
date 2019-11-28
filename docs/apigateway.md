@@ -21,7 +21,9 @@ let myMock = lambdaEventMock.apiGateway()
   "headers": {
     "day": "Friday"
   },
-  "queryStringParameters": null,
+  "multiValueHeaders": {
+    "day": [ "Friday" ]
+  },
   "pathParameters": null,
   "stageVariables": null,
   "requestContext": {
@@ -65,16 +67,21 @@ let myMock = lambdaEventMock.apiGateway()
                         day: 'Friday',
                         happy: 'Yes'
                     })
-                    .header( 'age', '42' )
+                    .header( 'ages', '42' )
+                    .header( 'ages', '43' )
                     .build();
 
 /*
 
-myMock.headers will equal:
-{
-  "day": "Friday",
-  "happy", "Yes",
-  "age", "42"
+myMock.headers = {
+    day: 'Friday',
+    happy: 'Yes',
+    ages: '42'
+},
+myMock.multiValueHeaders = {
+    day: [ 'Friday' ],
+    happy: [ 'Yes' ],
+    ages: [ '42', '43' ]
 }
 
 */
@@ -112,11 +119,15 @@ let myMock = lambdaEventMock.apiGateway()
 
 /*
 
-myMock.headers will equal:
-{
-  "expanded": "true",
-  "page", "1",
-  "show", "45"
+myMock.queryStringParameters = {
+    expanded: 'true',
+    page: '1',
+    show: '45'
+},
+myMock.multiValueQueryStringParameters = {
+    expanded: [ 'true' ],
+    page: [ '1' ],
+    show: [ '45' ]
 }
 
 */

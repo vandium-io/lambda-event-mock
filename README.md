@@ -9,7 +9,7 @@ contain dynamic data.
 ## Features
 * Easy to use builder-pattern to create mock lambda events for testing
 * Works with [lambda-tester](https://github.com/vandium-io/lambda-tester)
-* Works with Node 8.x
+* Works with Node 10.x
 
 ## Installation
 Install via npm.
