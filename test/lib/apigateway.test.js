@@ -127,6 +127,114 @@ describe( 'lib/api', function() {
             });
         });
 
+        describe( '.header', function() {
+
+            it( 'normal operation', function() {
+
+                let instance = new APIGatewayEventMock();
+
+                const { _event } = instance;
+
+                expect( _event.headers ).to.not.exist;
+                expect( _event.multiValueHeaders ).to.not.exist;
+
+                let returnValue = instance.header( 'key', 'key-value' );
+                expect( returnValue ).to.equal( instance );
+
+                expect( _event.headers ).to.exist;
+                expect( _event.headers ).to.eql( { key: 'key-value' } );
+                expect( _event.multiValueHeaders ).to.exist;
+                expect( _event.multiValueHeaders ).to.eql( { key: ['key-value'] } );
+
+                returnValue = instance.header( 'key', 'key-value-additional' );
+                expect( returnValue ).to.equal( instance );
+
+                expect( _event.headers ).to.eql( { key: 'key-value' } );
+                expect( _event.multiValueHeaders ).to.eql( { key: ['key-value', 'key-value-additional'] } );
+            });
+        });
+
+        describe( '.headers', function() {
+
+            it( 'normal operation', function() {
+
+                let instance = new APIGatewayEventMock();
+
+                const { _event } = instance;
+
+                expect( _event.headers ).to.not.exist;
+                expect( _event.multiValueHeaders ).to.not.exist;
+
+                let returnValue = instance.headers( { 'key': 'key-value' } );
+                expect( returnValue ).to.equal( instance );
+
+                expect( _event.headers ).to.exist;
+                expect( _event.headers ).to.eql( { key: 'key-value' } );
+                expect( _event.multiValueHeaders ).to.exist;
+                expect( _event.multiValueHeaders ).to.eql( { key: ['key-value'] } );
+
+                returnValue = instance.headers( { 'key': 'key-value-additional' } );
+                expect( returnValue ).to.equal( instance );
+
+                expect( _event.headers ).to.eql( { key: 'key-value' } );
+                expect( _event.multiValueHeaders ).to.eql( { key: ['key-value', 'key-value-additional'] } );
+            });
+        });
+
+        describe( '.queryStringParameter', function() {
+
+            it( 'normal operation', function() {
+
+                let instance = new APIGatewayEventMock();
+
+                const { _event } = instance;
+
+                expect( _event.queryStringParameters ).to.not.exist;
+                expect( _event.multiValueQueryStringParameters ).to.not.exist;
+
+                let returnValue = instance.queryStringParameter( 'key', 'key-value' );
+                expect( returnValue ).to.equal( instance );
+
+                expect( _event.queryStringParameters ).to.exist;
+                expect( _event.queryStringParameters ).to.eql( { key: 'key-value' } );
+                expect( _event.multiValueQueryStringParameters ).to.exist;
+                expect( _event.multiValueQueryStringParameters ).to.eql( { key: ['key-value'] } );
+
+                returnValue = instance.queryStringParameter( 'key', 'key-value-additional' );
+                expect( returnValue ).to.equal( instance );
+
+                expect( _event.queryStringParameters ).to.eql( { key: 'key-value' } );
+                expect( _event.multiValueQueryStringParameters ).to.eql( { key: ['key-value', 'key-value-additional'] } );
+            });
+        });
+
+        describe( '.queryStringParameters', function() {
+
+            it( 'normal operation', function() {
+
+                let instance = new APIGatewayEventMock();
+
+                const { _event } = instance;
+
+                expect( _event.queryStringParameters ).to.not.exist;
+                expect( _event.multiValueQueryStringParameters ).to.not.exist;
+
+                let returnValue = instance.queryStringParameters( { 'key': 'key-value' } );
+                expect( returnValue ).to.equal( instance );
+
+                expect( _event.queryStringParameters ).to.exist;
+                expect( _event.queryStringParameters ).to.eql( { key: 'key-value' } );
+                expect( _event.multiValueQueryStringParameters ).to.exist;
+                expect( _event.multiValueQueryStringParameters ).to.eql( { key: ['key-value'] } );
+
+                returnValue = instance.queryStringParameters( {'key': 'key-value-additional' } );
+                expect( returnValue ).to.equal( instance );
+
+                expect( _event.queryStringParameters ).to.eql( { key: 'key-value' } );
+                expect( _event.multiValueQueryStringParameters ).to.eql( { key: ['key-value', 'key-value-additional'] } );
+            });
+        });
+
         describe( '.build', function() {
 
             it( 'defaults', function() {
@@ -155,6 +263,7 @@ describe( 'lib/api', function() {
                                     .method( 'POST' )
                                     .path( '/things/Friday' )
                                     .body( { one: 1, two: 2 } )
+                                    .header( 'key', 'key1value' )
                                     .queryStringParameter( 'expanded', 'true' )
                                     .stageVariable( 'DEBUG_LEVEL', 'info' )
                                     .pathParameter( 'day', 'Friday' )
@@ -163,7 +272,7 @@ describe( 'lib/api', function() {
                 expect( event.resource ).to.equal( '/things/Friday' );
                 expect( event.path ).to.equal( '/things/Friday' );
                 expect( event.httpMethod ).to.equal( 'POST' );
-                expect( event.headers ).to.be.null;
+                expect( event.headers ).to.eql( { key: 'key1value' } );
                 expect( event.queryStringParameters ).to.eql( { expanded: 'true' } );
                 expect( event.pathParameters ).to.eql( { day: 'Friday' } );
                 expect( event.stageVariables ).to.eql( { DEBUG_LEVEL: 'info' } );
